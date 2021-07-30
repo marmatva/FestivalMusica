@@ -1,5 +1,6 @@
 document.addEventListener('DOMContentLoaded', function(){
     scrollNav();
+    navegacionFija();
 });
 
 function scrollNav(){
@@ -17,3 +18,18 @@ function scrollNav(){
         })
     })
 };
+
+function navegacionFija(){
+    const barra = document.querySelector('.header');
+    //Registra el Intersection Observer
+    const observer = new IntersectionObserver( function(entries) { //entries da informacion del elemento a observar
+        if(entries[0].isIntersecting){
+            barra.classList.remove('fijo');
+        } else{
+            barra.classList.add('fijo');
+        }
+    });
+
+    //Elemento a Observar
+    observer.observe(document.querySelector('.sobre-festival'));
+}
